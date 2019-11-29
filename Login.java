@@ -7,10 +7,10 @@ public class Login {
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-	public List <String> passwords = new ArrayList <String>;
-	public List <String> emails = new ArrayList <String>;
-	public List <String> firstNames = new ArrayList <String>;
-	public List <String> lastNames = new ArrayList <String>;
+	public static ArrayList <String> passwords = new ArrayList <String>();
+	public static ArrayList <String> emails = new ArrayList <String>();
+	public static ArrayList <String> firstNames = new ArrayList <String>();
+	public static ArrayList <String> lastNames = new ArrayList <String>();
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -36,7 +36,7 @@ public class Login {
 
 	public static boolean signUp (String password, String email, String firstName, String lastName) {
 
-		if (checkIfUserExists == false) {
+		if (checkIfUserExists(password,email) == false) {
 
 			passwords.add(password);
 			emails.add(email);
@@ -59,7 +59,7 @@ public class Login {
 
 	public static boolean signIn (String password, String email) {
 
-		if (checkIfUserExists == true) {
+		if (checkIfUserExists(password,email) == true) {
 
 			if (passwords.contains(password)) {
 
