@@ -17,6 +17,9 @@ public class Main {
 
 	public static void main (String[] args) {
 
+		Login.passwords.add("ABC");
+		Login.emails.add("tlm@");
+
 		Scanner scanner = new Scanner(System.in);
 
 		welcomeMessages();
@@ -56,9 +59,14 @@ public class Main {
 
 	}
 
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 	public static void existingUser () {
 
+
 		Scanner scanner = new Scanner(System.in);
+		boolean condition = true;
 
 		System.out.println("Nice. Please write down your email:");
 		System.out.println("");
@@ -80,12 +88,15 @@ public class Main {
 
 		else if ((Login.signIn(user.getPassword(), user.getEmail())) == true) {
 
+
 			System.out.print("Login succesfull ...");
 			System.out.println("");
 
+			while (condition) {
+
 			System.out.println("What would you like to do?");
 			System.out.println("");
-			System.out.println("Press p for changing password, r for remind password, c for choosing the caterer, b for choosing the band and v for choosing the venue: ");
+			System.out.println("Press p for changing password, r for remind password, t for your list of tasks, c for choosing the caterer, b for choosing the band, v for choosing the venue and q to quit: ");
 			System.out.println("");
 
 			char input = scanner.next().charAt(0); 
@@ -104,27 +115,47 @@ public class Main {
 
 			else if (input == 'r') {
 
+				user.remindPassword();
+
+			}
+
+			else if (input == 't') {
+
+				Checklist.handlingTasks();
 
 			}
 
 			else if (input == 'c') {
 
-				
+
+
+
 			}
 
 			else if (input == 'b') {
 
-				
 			}
 
 			else if (input== 'v') {
 
 				
+
+			}
+
+			else if (input == 'q') {
+
+				System.out.println("Quitting...");
+				condition = false;
+
 			}
 
 		}
+		}
 
 	}
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 	public static void nonExistingUser () {
 
