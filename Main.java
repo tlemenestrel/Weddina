@@ -6,9 +6,6 @@ import weddina.week1.User;
 import weddina.week1.Login;
 import weddina.week1.Checklist;
 import weddina.week1.Choices;
-import weddina.week1.CatererChoice;
-import weddina.week1.BandChoice;
-import weddina.week1.VenueChoice;
 
 public class Main {
 
@@ -40,6 +37,7 @@ public class Main {
 		else if (input == 'n') {
 
 			nonExistingUser();
+			existingUser();
 			condition1 = false;
 
 		}
@@ -84,11 +82,10 @@ public class Main {
 
 	public static void existingUser () {
 
-
 		Scanner scanner = new Scanner(System.in);
 		boolean condition2 = true;
 
-		System.out.println("Nice. Please write down your email:");
+		System.out.println("To login, please write down your email:");
 		System.out.println("");
 		String email = scanner.nextLine();
 		System.out.println("");
@@ -129,7 +126,6 @@ public class Main {
 				System.out.println("Password changed ...");
 				System.out.println("");
 
-
 			}
 
 			else if (input == 'r') {
@@ -151,18 +147,19 @@ public class Main {
 
 			else if (input == 'c') {
 
-
-
+				Choices.handlingChoices(Choices.catererNames, Choices.catererDescriptions, Choices.catererPrices, Choices.catererChoice);
 
 			}
 
 			else if (input == 'b') {
 
+				Choices.handlingChoices(Choices.bandNames, Choices.bandDescriptions, Choices.bandPrices, Choices.bandChoice);
+
 			}
 
 			else if (input== 'v') {
 
-				
+				Choices.handlingChoices(Choices.venueNames, Choices.venueDescriptions, Choices.venuePrices, Choices.venueChoice);	
 
 			}
 
@@ -190,8 +187,33 @@ public class Main {
 
 	public static void nonExistingUser () {
 
+		Scanner scanner = new Scanner(System.in);
 
+		System.out.println("");
+		System.out.println("To signup for Wedinna, we will need your email adress and a password");
+		System.out.println("");
+
+		System.out.println("Please write down your email:");
+		System.out.println("");
+		String email = scanner.nextLine();
+		System.out.println("");
+
+		System.out.println("Nice. Please write down your password now:");
+		System.out.println("");
+		String password = scanner.nextLine();
+		System.out.println("");
+
+		Login.passwords.add(password);
+		Login.emails.add(email);
+
+		System.out.println("Perfect. You are registered");
+		System.out.println("");
+		System.out.println("You are now being redirected to the login page...");
+		System.out.println("");
 
 }
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 }

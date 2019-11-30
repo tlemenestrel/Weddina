@@ -19,55 +19,85 @@ public class Checklist{
 
 		while (conditionCheckList) {
 
-		System.out.println("What would you like to do?");
-		System.out.println("");
-		System.out.println("Press d for deleting a task, a for adding a task, c to check your tasks and q to go back to the main menu");
+			System.out.println("");
+			System.out.println("What would you like to do?");
+			System.out.println("");
+			System.out.println("Press d for deleting a task, a for adding a task, c to check your tasks and q to go back to the main menu");
+			System.out.println("");
 
-		char input = scanner.next().charAt(0);
-		scanner.nextLine(); 
+			char input = scanner.next().charAt(0);
+			scanner.nextLine(); 
 
-		if (input == 'd') {
+			if (input == 'd') {
 
-			System.out.println("What task would you like to remove?");
-			String task = scanner.nextLine();
-			deleteTask(task);
-			System.out.println("Task deleted");
+				System.out.println("");
+				System.out.println("What task would you like to remove?");
+				System.out.println("");
+				
+				String task = scanner.nextLine();
+				
+				if ((deleteTask(task)) == true) {
+
+				System.out.println("Task deleted");
+
+			}
+
+			else {
+
+				System.out.println("");
+				System.out.println("You do not have this task in your checklist");
+
+			}
+
+			}
+
+			else if (input == 'a') {
+
+				System.out.println("");
+				System.out.println("What task would you like to add?");
+				String task = scanner.nextLine();
+				addTask(task);
+				System.out.println("Task added");
+
+			}
+
+			else if (input == 'c') {
+
+				System.out.println("");
+				System.out.println("Your tasks are:");
+				checkTasks();
+
+			}
+
+			else if (input == 'q') {
+
+				System.out.println("");
+				System.out.println("Back to the main menu...");
+				conditionCheckList = false;
+
+			}
 
 		}
-
-		else if (input == 'a') {
-
-			System.out.println("What task would you like to add?");
-			String task = scanner.nextLine();
-			addTask(task);
-			System.out.println("Task added");
-
-		}
-
-		else if (input == 'c') {
-
-			System.out.println("Your tasks are:");
-			checkTasks();
-
-		}
-
-		else if (input == 'q') {
-
-			System.out.println("Back to the main menu...");
-			conditionCheckList = false;
-			
-		}
-
-	}
 
 	}
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-	public static void deleteTask (String task) {
+	public static boolean deleteTask (String task) {
 
-		tasks.remove(task);
+		if (tasks.contains(task) == true) {
+
+			tasks.remove(task);
+			return true;
+
+		}
+
+		else {
+
+			return false;
+
+		}
 
 	}
 
@@ -85,11 +115,26 @@ public class Checklist{
 
 	public static void checkTasks () {
 
-		for (String task : tasks) {
+		if (tasks.isEmpty() == true ) {
 
-			System.out.println(task);
+			System.out.println("");
+			System.out.println("You do not have any tasks at the moment");
 
 		}
+		else {
+
+			int counter = 1;
+
+		for (String task : tasks) {
+
+			System.out.println("");
+			System.out.println(counter+ "-" + task);
+
+			counter ++;
+
+		}
+
+	}
 
 	}
 
