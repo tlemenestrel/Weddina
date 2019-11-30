@@ -44,7 +44,7 @@ public class User {
 
 		if (Login.checkIfUserExists(password,email) == true) {
 
-			return ("Your password is" + getPassword());
+			return ("Your password is: " + getPassword());
 
 		}
 

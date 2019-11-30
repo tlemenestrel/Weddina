@@ -15,15 +15,16 @@ public class Checklist{
 	public static void handlingTasks() {
 
 		Scanner scanner = new Scanner(System.in);
-		boolean condition = true;
+		boolean conditionCheckList = true;
 
-		while (condition) {
+		while (conditionCheckList) {
 
 		System.out.println("What would you like to do?");
 		System.out.println("");
-		System.out.println("Press d for deleting a task, a for adding a task, c to check your tasks and q to quit");
+		System.out.println("Press d for deleting a task, a for adding a task, c to check your tasks and q to go back to the main menu");
 
-		char input = scanner.next().charAt(0); 
+		char input = scanner.next().charAt(0);
+		scanner.nextLine(); 
 
 		if (input == 'd') {
 
@@ -53,6 +54,8 @@ public class Checklist{
 		else if (input == 'q') {
 
 			System.out.println("Back to the main menu...");
+			conditionCheckList = false;
+			
 		}
 
 	}

@@ -20,21 +20,27 @@ public class Main {
 		Login.passwords.add("ABC");
 		Login.emails.add("tlm@");
 
+		boolean condition1 = true;
+
 		Scanner scanner = new Scanner(System.in);
 
 		welcomeMessages();
 
 		char input = scanner.next().charAt(0); 
 
+		while (condition1) {
+
 		if (input == 'y') {
 
 			existingUser();
+			condition1 = false;
 
 		}
 
 		else if (input == 'n') {
 
 			nonExistingUser();
+			condition1 = false;
 
 		}
 
@@ -43,6 +49,20 @@ public class Main {
 			System.out.println("Wrong input");
 
 		}
+
+	}
+
+	}
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+	public static void choiceMessages () {
+
+		System.out.println("What would you like to do?");
+		System.out.println("");
+		System.out.println("Press p for changing password, r for remind password, t for your list of tasks, c for choosing the caterer, b for choosing the band, v for choosing the venue and q to quit: ");
+		System.out.println("");
 
 	}
 
@@ -66,7 +86,7 @@ public class Main {
 
 
 		Scanner scanner = new Scanner(System.in);
-		boolean condition = true;
+		boolean condition2 = true;
 
 		System.out.println("Nice. Please write down your email:");
 		System.out.println("");
@@ -88,18 +108,15 @@ public class Main {
 
 		else if ((Login.signIn(user.getPassword(), user.getEmail())) == true) {
 
-
 			System.out.print("Login succesfull ...");
 			System.out.println("");
 
-			while (condition) {
+			while (condition2) {
 
-			System.out.println("What would you like to do?");
-			System.out.println("");
-			System.out.println("Press p for changing password, r for remind password, t for your list of tasks, c for choosing the caterer, b for choosing the band, v for choosing the venue and q to quit: ");
-			System.out.println("");
+			choiceMessages();
 
 			char input = scanner.next().charAt(0); 
+			scanner.nextLine();
 
 			if (input == 'p') {
 
@@ -110,18 +127,25 @@ public class Main {
 
 				user.changePassword(newPassword);
 				System.out.println("Password changed ...");
+				System.out.println("");
+
 
 			}
 
 			else if (input == 'r') {
 
-				user.remindPassword();
+				System.out.println("");
+				System.out.println (user.remindPassword());
+				System.out.println("");
+
 
 			}
 
 			else if (input == 't') {
 
+				System.out.println("");
 				Checklist.handlingTasks();
+				System.out.println("");
 
 			}
 
@@ -145,11 +169,18 @@ public class Main {
 			else if (input == 'q') {
 
 				System.out.println("Quitting...");
-				condition = false;
+				condition2 = false;
+
+			}
+
+			else {
+
+				System.out.println("Wrong input...");
 
 			}
 
 		}
+
 		}
 
 	}
