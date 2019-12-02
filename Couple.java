@@ -15,33 +15,33 @@ public class Couple  {
 
 		welcomeMessagesCouple();
 
-		char input = scanner.next().charAt(0); 
-		scanner.nextLine();
-
 		while (condition1) {
 
-		if (input == 'y') {
+			char input = scanner.next().charAt(0); 
+			scanner.nextLine();
 
-			existingCouple();
-			condition1 = false;
+			if (input == 'y') {
+
+				existingCouple();
+				condition1 = false;
+
+			}
+
+			else if (input == 'n') {
+
+				nonExistingCouple();
+				existingCouple();
+				condition1 = false;
+
+			}
+
+			else {
+
+				System.out.println("Wrong input");
+
+			}
 
 		}
-
-		else if (input == 'n') {
-
-			nonExistingCouple();
-			existingCouple();
-			condition1 = false;
-
-		}
-
-		else {
-
-			System.out.println("Wrong input");
-
-		}
-
-	}
 
 	}
 
