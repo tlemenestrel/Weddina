@@ -7,25 +7,6 @@ public class Choices {
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-	public static ArrayList <String> catererNames = new ArrayList <String>();
-	public static ArrayList <String> catererPrices = new ArrayList <String>();
-	public static ArrayList <String> catererDescriptions = new ArrayList <String>();
-
-	public static ArrayList <String>bandNames = new ArrayList <String>();
-	public static ArrayList <String> bandPrices = new ArrayList <String>();
-	public static ArrayList <String> bandDescriptions = new ArrayList <String>();
-
-	public static ArrayList <String> venueNames = new ArrayList <String>();
-	public static ArrayList <String> venuePrices = new ArrayList <String>();
-	public static ArrayList <String> venueDescriptions = new ArrayList <String>();
-
-	public static String catererChoice;
-	public static String bandChoice;
-	public static String venueChoice;
-
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
 	public static void handlingChoices (ArrayList<String> listNames,ArrayList<String> listDescriptions, ArrayList<String> listPrices, String destination) {
 
 		Scanner scanner = new Scanner(System.in);

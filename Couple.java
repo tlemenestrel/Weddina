@@ -2,8 +2,21 @@ package weddina.week1;
 
 import java.util.*;
 
+import weddina.week1.Businesses;
+
 public class Couple  {
 
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+	public static ArrayList <String> couplePasswords = new ArrayList <String>();
+	public static ArrayList <String> coupleEmails = new ArrayList <String>();
+	public static ArrayList <String> coupleContactDetails = new ArrayList <String>();
+
+	public static String catererChoice;
+	public static String bandChoice;
+	public static String venueChoice;
+	
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -66,7 +79,7 @@ public class Couple  {
 		String password = scanner.nextLine();
 		System.out.println("");
 
-		Login.signUp(password,email,Login.couplePasswords,Login.coupleEmails);
+		Login.signUp(password,email,couplePasswords,coupleEmails);
 	
 		System.out.println("Perfect. You are registered");
 		System.out.println("");
@@ -95,13 +108,13 @@ public class Couple  {
 
 		User user = new User(email, password);
 
-		if (Login.signIn(user.getPassword(), user.getEmail(),Login.coupleEmails, Login.couplePasswords) == false) {
+		if (Login.signIn(user.getPassword(), user.getEmail(),coupleEmails, couplePasswords) == false) {
 
 			System.out.print("Login unsuccesfull ...");
 
 		}
 
-		else if (Login.signIn(user.getPassword(), user.getEmail(),Login.coupleEmails,Login.couplePasswords) == true) {
+		else if (Login.signIn(user.getPassword(), user.getEmail(),coupleEmails,couplePasswords) == true) {
 
 			System.out.print("Login succesfull ...");
 			System.out.println("");
@@ -120,7 +133,7 @@ public class Couple  {
 
 				String newPassword = scanner.nextLine();
 
-				user.changePassword(newPassword, Login.couplePasswords,Login.coupleEmails);
+				user.changePassword(newPassword, couplePasswords,coupleEmails);
 				System.out.println("Password changed ...");
 				System.out.println("");
 
@@ -129,7 +142,7 @@ public class Couple  {
 			else if (input == 'r') {
 
 				System.out.println("");
-				System.out.println (user.remindPassword(Login.coupleEmails));
+				System.out.println (user.remindPassword(coupleEmails));
 				System.out.println("");
 
 
@@ -145,19 +158,19 @@ public class Couple  {
 
 			else if (input == 'c') {
 
-				Choices.handlingChoices(Choices.catererNames, Choices.catererDescriptions, Choices.catererPrices, Choices.catererChoice);
+				Choices.handlingChoices(Businesses.catererNames, Businesses.catererDescriptions, Businesses.catererPrices, catererChoice);
 
 			}
 
 			else if (input == 'b') {
 
-				Choices.handlingChoices(Choices.bandNames, Choices.bandDescriptions, Choices.bandPrices, Choices.bandChoice);
+				Choices.handlingChoices(Businesses.bandNames, Businesses.bandDescriptions, Businesses.bandPrices, bandChoice);
 
 			}
 
 			else if (input== 'v') {
 
-				Choices.handlingChoices(Choices.venueNames, Choices.venueDescriptions, Choices.venuePrices, Choices.venueChoice);	
+				Choices.handlingChoices(Businesses.venueNames, Businesses.venueDescriptions, Businesses.venuePrices, venueChoice);	
 
 			}
 
@@ -207,4 +220,3 @@ public class Couple  {
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 }
-

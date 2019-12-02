@@ -7,6 +7,8 @@ import weddina.week1.Login;
 import weddina.week1.Checklist;
 import weddina.week1.Choices;
 import weddina.week1.Guests;
+import weddina.week1.Couple;
+import weddina.week1.Businesses;
 
 public class Main {
 
@@ -25,8 +27,8 @@ public class Main {
 	
 	public static void insertDataForTesting () {
 
-		Login.couplePasswords.add("ABC");
-		Login.coupleEmails.add("tlm@");
+		Couple.couplePasswords.add("ABC");
+		Couple.coupleEmails.add("tlm@");
 
 	}
 
@@ -49,12 +51,13 @@ public class Main {
 			if (input == 'c') {
 
 				Couple.handlingCouple();
-
+				condition1 = false;
 			}
 
 			else if (input == 'g') {
 
 				Guests.handlingGuests();
+				condition1 = false;
 
 			}
 

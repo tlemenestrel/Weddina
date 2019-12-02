@@ -6,6 +6,21 @@ import weddina.week1.Login;
 
 public class Guests {
 
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+	public static ArrayList <String> guestPasswords = new ArrayList <String>();
+	public static ArrayList <String> guestEmails = new ArrayList <String>();
+
+	public static ArrayList <String> foodRequirements = new ArrayList <String>();
+
+	public static ArrayList <Integer> seatNumber = new ArrayList <Integer>();
+
+	public static ArrayList <Boolean> guestsResponses = new ArrayList <Boolean>();
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 		public static void handlingGuests () {
 
 		boolean condition1 = true;
@@ -65,7 +80,7 @@ public class Guests {
 		String password = scanner.nextLine();
 		System.out.println("");
 
-		Login.signUp(password,email,Login.guestPasswords,Login.guestEmails);
+		Login.signUp(password,email,guestPasswords,guestEmails);
 	
 		System.out.println("Perfect. You are registered");
 		System.out.println("");
@@ -94,83 +109,93 @@ public class Guests {
 
 		User user = new User(email, password);
 
-		if (Login.signIn(user.getPassword(), user.getEmail(),Login.guestEmails, Login.guestPasswords) == false) {
+		if (Login.signIn(user.getPassword(), user.getEmail(),guestEmails, guestPasswords) == false) {
 
 			System.out.print("Login unsuccesfull ...");
 
 		}
 
-		else if (Login.signIn(user.getPassword(), user.getEmail(),Login.guestEmails,Login.guestPasswords) == true) {
+		else if (Login.signIn(user.getPassword(), user.getEmail(),guestEmails,guestPasswords) == true) {
 
 			System.out.print("Login succesfull ...");
 			System.out.println("");
 
 			while (condition2) {
 
-			choiceMessagesGuest();
+				choiceMessagesGuest();
 
-			char input = scanner.next().charAt(0); 
-			scanner.nextLine();
+				char input = scanner.next().charAt(0); 
+				scanner.nextLine();
 
-			if (input == 'p') {
+				if (input == 'p') {
 
-				System.out.println("Please input your new password");
-				System.out.println("");
+					System.out.println("Please input your new password");
+					System.out.println("");
 
-				String newPassword = scanner.nextLine();
+					String newPassword = scanner.nextLine();
 
-				user.changePassword(newPassword, Login.guestPasswords,Login.guestEmails);
-				System.out.println("Password changed ...");
-				System.out.println("");
+					user.changePassword(newPassword, guestPasswords,guestEmails);
+					System.out.println("Password changed ...");
+					System.out.println("");
+
+				}
+
+				else if (input == 'r') {
+
+					System.out.println("");
+					System.out.println (user.remindPassword(guestEmails));
+					System.out.println("");
+
+				}
+
+				else if (input == 'f') {
+
+					System.out.println("");
+					foodRequirements();
+					System.out.println("");
+
+				}
+
+				else if (input == 'i') {
+
+					System.out.println("");
+					respondToInvitation();
+					System.out.println("");
+
+				}
+
+				else if (input == 's') {
+
+					System.out.println("");
+					seatNumber();
+					System.out.println("");
+
+				}
+
+				else if (input == 'd') {
+
+					System.out.println("");
+					coupleContactDetails();
+					System.out.println("");
+
+				}
+
+				else if (input == 'q') {
+
+					System.out.println("Quitting...");
+					condition2 = false;
+
+				}
+
+				else {
+
+					System.out.println("");
+					System.out.println("Wrong input...");
+					System.out.println("");
+
+				}
 
 			}
-
-			else if (input == 'r') {
-
-				System.out.println("");
-				System.out.println (user.remindPassword(Login.guestEmails));
-				System.out.println("");
-
-
-			}
-
-			else if (input == 'f') {
-
-				System.out.println("");
-				Checklist.handlingTasks();
-				System.out.println("");
-
-			}
-
-			else if (input == 'i') {
-
-
-			}
-
-			else if (input == 's') {
-
-
-			}
-
-			else if (input == 'd') {
-
-
-			}
-
-			else if (input == 'q') {
-
-				System.out.println("Quitting...");
-				condition2 = false;
-
-			}
-
-			else {
-
-				System.out.println("Wrong input...");
-
-			}
-
-		}
 
 		}
 
@@ -201,5 +226,38 @@ public class Guests {
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+	public static void foodRequirements () {
+
+
+	}
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+	public static void respondToInvitation () {
+
+
+	}
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+	public static void seatNumber () {
+
+
+	}
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+	public static void coupleContactDetails () {
+
+
+	}
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 
 }
