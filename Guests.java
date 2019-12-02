@@ -80,7 +80,7 @@ public class Guests {
 		String password = scanner.nextLine();
 		System.out.println("");
 
-		Login.signUp(password,email,guestPasswords,guestEmails);
+		Login.signUpGuest(password,email,guestPasswords,guestEmails);
 	
 		System.out.println("Perfect. You are registered");
 		System.out.println("");
@@ -109,13 +109,13 @@ public class Guests {
 
 		User user = new User(email, password);
 
-		if (Login.signIn(user.getPassword(), user.getEmail(),guestEmails, guestPasswords) == false) {
+		if (Login.signInGuest(user.getPassword(), user.getEmail(),guestEmails, guestPasswords) == false) {
 
 			System.out.print("Login unsuccesfull ...");
 
 		}
 
-		else if (Login.signIn(user.getPassword(), user.getEmail(),guestEmails,guestPasswords) == true) {
+		else if (Login.signInGuest(user.getPassword(), user.getEmail(),guestEmails,guestPasswords) == true) {
 
 			System.out.print("Login succesfull ...");
 			System.out.println("");
@@ -134,7 +134,7 @@ public class Guests {
 
 					String newPassword = scanner.nextLine();
 
-					user.changePassword(newPassword, guestPasswords,guestEmails);
+					user.changePasswordGuest(newPassword,guestPasswords,guestEmails);
 					System.out.println("Password changed ...");
 					System.out.println("");
 
@@ -143,7 +143,7 @@ public class Guests {
 				else if (input == 'r') {
 
 					System.out.println("");
-					System.out.println (user.remindPassword(guestEmails));
+					System.out.println (user.remindPasswordGuest(guestEmails));
 					System.out.println("");
 
 				}

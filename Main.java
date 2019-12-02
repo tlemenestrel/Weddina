@@ -27,8 +27,8 @@ public class Main {
 	
 	public static void insertDataForTesting () {
 
-		Couple.couplePasswords.add("ABC");
-		Couple.coupleEmails.add("tlm@");
+		Couple.couplePassword = "ABC";
+		Couple.coupleEmail = "tlm@";
 
 	}
 

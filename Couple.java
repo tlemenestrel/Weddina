@@ -9,9 +9,9 @@ public class Couple  {
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-	public static ArrayList <String> couplePasswords = new ArrayList <String>();
-	public static ArrayList <String> coupleEmails = new ArrayList <String>();
-	public static ArrayList <String> coupleContactDetails = new ArrayList <String>();
+	public static String couplePassword;
+	public static String coupleEmail;
+	public static String coupleContactDetails;
 
 	public static String catererChoice;
 	public static String bandChoice;
@@ -79,7 +79,7 @@ public class Couple  {
 		String password = scanner.nextLine();
 		System.out.println("");
 
-		Login.signUp(password,email,couplePasswords,coupleEmails);
+		Login.signUpCouple(password,email);
 	
 		System.out.println("Perfect. You are registered");
 		System.out.println("");
@@ -108,13 +108,13 @@ public class Couple  {
 
 		User user = new User(email, password);
 
-		if (Login.signIn(user.getPassword(), user.getEmail(),coupleEmails, couplePasswords) == false) {
+		if (Login.signInCouple(user.getPassword(), user.getEmail()) == false) {
 
 			System.out.print("Login unsuccesfull ...");
 
 		}
 
-		else if (Login.signIn(user.getPassword(), user.getEmail(),coupleEmails,couplePasswords) == true) {
+		else if (Login.signInCouple(user.getPassword(), user.getEmail()) == true) {
 
 			System.out.print("Login succesfull ...");
 			System.out.println("");
@@ -133,7 +133,7 @@ public class Couple  {
 
 				String newPassword = scanner.nextLine();
 
-				user.changePassword(newPassword, couplePasswords,coupleEmails);
+				user.changePasswordCouple(newPassword);
 				System.out.println("Password changed ...");
 				System.out.println("");
 
@@ -142,7 +142,7 @@ public class Couple  {
 			else if (input == 'r') {
 
 				System.out.println("");
-				System.out.println (user.remindPassword(coupleEmails));
+				System.out.println (user.remindPasswordCouple());
 				System.out.println("");
 
 
