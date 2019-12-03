@@ -16,7 +16,7 @@ public class Couple  {
 	public static String catererChoice;
 	public static String bandChoice;
 	public static String venueChoice;
-	
+
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -95,99 +95,106 @@ public class Couple  {
 
 		Scanner scanner = new Scanner(System.in);
 		boolean condition2 = true;
+		boolean condition3 = true;
 
-		System.out.println("To login, please write down your email:");
-		System.out.println("");
-		String email = scanner.nextLine();
-		System.out.println("");
+		while (condition3) {
 
-		System.out.println("Nice. Please write down your password now:");
-		System.out.println("");
-		String password = scanner.nextLine();
-		System.out.println("");
-
-		User user = new User(email, password);
-
-		if (Login.signInCouple(user.getPassword(), user.getEmail()) == false) {
-
-			System.out.print("Login unsuccesfull ...");
-
-		}
-
-		else if (Login.signInCouple(user.getPassword(), user.getEmail()) == true) {
-
-			System.out.print("Login succesfull ...");
+			System.out.println("To login, please write down your email:");
+			System.out.println("");
+			String email = scanner.nextLine();
 			System.out.println("");
 
-			while (condition2) {
+			System.out.println("Nice. Please write down your password now:");
+			System.out.println("");
+			String password = scanner.nextLine();
+			System.out.println("");
 
-			choiceMessagesCouple();
+			User user = new User(email, password);
 
-			char input = scanner.next().charAt(0); 
-			scanner.nextLine();
+			if (Login.signInCouple(user.getPassword(), user.getEmail()) == false) {
 
-			if (input == 'p') {
+				System.out.println("Login unsuccesfull ...");
 
-				System.out.println("Please input your new password");
+			}
+
+			else if (Login.signInCouple(user.getPassword(), user.getEmail()) == true) {
+
+				System.out.print("Login succesfull ...");
 				System.out.println("");
 
-				String newPassword = scanner.nextLine();
+				condition3 = false;
 
-				user.changePasswordCouple(newPassword);
-				System.out.println("Password changed ...");
-				System.out.println("");
+				while (condition2) {
+
+					choiceMessagesCouple();
+
+					char input = scanner.next().charAt(0); 
+					scanner.nextLine();
+
+					if (input == 'p') {
+
+						System.out.println("Please input your new password");
+						System.out.println("");
+
+						String newPassword = scanner.nextLine();
+
+						user.changePasswordCouple(newPassword);
+						System.out.println("Password changed ...");
+						System.out.println("");
+
+					}
+
+					else if (input == 'r') {
+
+						System.out.println("");
+						System.out.println (user.remindPasswordCouple());
+						System.out.println("");
+
+
+					}
+
+					else if (input == 't') {
+
+						System.out.println("");
+						Checklist.handlingTasks();
+						System.out.println("");
+
+					}
+
+					else if (input == 'c') {
+
+						Choices.handlingChoices(Businesses.catererNames, Businesses.catererDescriptions, Businesses.catererPrices, catererChoice);
+
+					}
+
+					else if (input == 'b') {
+
+						Choices.handlingChoices(Businesses.bandNames, Businesses.bandDescriptions, Businesses.bandPrices, bandChoice);
+
+					}
+
+					else if (input== 'v') {
+
+						Choices.handlingChoices(Businesses.venueNames, Businesses.venueDescriptions, Businesses.venuePrices, venueChoice);	
+
+					}
+
+					else if (input == 'q') {
+
+						System.out.println("Quitting...");
+						condition2 = false;
+
+					}
+
+					else {
+
+						System.out.println("Wrong input...");
+
+					}
+
+				}
 
 			}
-
-			else if (input == 'r') {
-
-				System.out.println("");
-				System.out.println (user.remindPasswordCouple());
-				System.out.println("");
-
-
-			}
-
-			else if (input == 't') {
-
-				System.out.println("");
-				Checklist.handlingTasks();
-				System.out.println("");
-
-			}
-
-			else if (input == 'c') {
-
-				Choices.handlingChoices(Businesses.catererNames, Businesses.catererDescriptions, Businesses.catererPrices, catererChoice);
-
-			}
-
-			else if (input == 'b') {
-
-				Choices.handlingChoices(Businesses.bandNames, Businesses.bandDescriptions, Businesses.bandPrices, bandChoice);
-
-			}
-
-			else if (input== 'v') {
-
-				Choices.handlingChoices(Businesses.venueNames, Businesses.venueDescriptions, Businesses.venuePrices, venueChoice);	
-
-			}
-
-			else if (input == 'q') {
-
-				System.out.println("Quitting...");
-				condition2 = false;
-
-			}
-
-			else {
-
-				System.out.println("Wrong input...");
-
-			}
-
-		}
 
 		}
 

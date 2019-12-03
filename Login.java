@@ -26,9 +26,9 @@ public class Login {
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-	public static boolean checkIfGuestExists (String email, ArrayList<String> listEmails) {
+	public static boolean checkIfGuestExists (String email) {
 
-		if (listEmails.contains(email)) {
+		if (Guests.guestEmails.contains(email)) {
 
 			return true;
 
@@ -59,12 +59,15 @@ public class Login {
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-	public static void signUpGuest (String password, String email,ArrayList<String> listPasswords, ArrayList<String> listEmails) {
+	public static void signUpGuest (String password, String email) {
 
-		if (checkIfGuestExists(email,listEmails) == false) {
+		if (checkIfGuestExists(email) == false) {
 
-			listPasswords.add(password);
-			listEmails.add(email);
+			Guests.guestPasswords.add(password);
+			Guests.guestEmails.add(email);
+			Guests.guestsResponses.add(new String("Not coming"));
+			Guests.seatNumber.add(Guests.seatCounter);
+			Guests.seatCounter++;
 
 		}
 
@@ -104,7 +107,7 @@ public class Login {
 
 	public static boolean signInGuest (String password, String email,ArrayList<String> listEmails, ArrayList<String> listPasswords) {
 
-		if (checkIfGuestExists(email,listEmails) == true) {
+		if (checkIfGuestExists(email) == true) {
 
 			if (listPasswords.contains(password)) {
 

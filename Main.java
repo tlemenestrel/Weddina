@@ -30,6 +30,19 @@ public class Main {
 		Couple.couplePassword = "ABC";
 		Couple.coupleEmail = "tlm@";
 
+		Guests.guestEmails.add("tlm@");
+		Guests.guestPasswords.add("ABC");
+		Guests.guestsResponses.add("Coming");
+		Guests.seatNumber.add(1);
+
+		// Guests.guestsResponses.ensureCapacity(50);
+
+		//for (Boolean response: Guests.guestsResponses) {
+
+		//	response = false;
+
+		// }
+
 	}
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

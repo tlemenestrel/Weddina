@@ -46,7 +46,7 @@ public class User {
 
 	public void changePasswordGuest (String newPassword, ArrayList<String> listPasswords, ArrayList<String> listEmails) {
 
-		if (Login.checkIfGuestExists(email, listEmails) == true) {
+		if (Login.checkIfGuestExists(email) == true) {
 
 			if (listPasswords.contains(password)) {
 
@@ -83,7 +83,7 @@ public class User {
 
 	public String remindPasswordGuest (ArrayList<String> listEmails) {
 
-		if (Login.checkIfGuestExists(email,listEmails) == true) {
+		if (Login.checkIfGuestExists(email) == true) {
 
 			return ("Your password is: " + getPassword());
 

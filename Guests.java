@@ -14,50 +14,52 @@ public class Guests {
 
 	public static ArrayList <String> foodRequirements = new ArrayList <String>();
 
+	public static ArrayList <String> guestsResponses = new ArrayList <String>();
+
 	public static ArrayList <Integer> seatNumber = new ArrayList <Integer>();
 
-	public static ArrayList <Boolean> guestsResponses = new ArrayList <Boolean>();
+	public static int seatCounter = 1;
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 		public static void handlingGuests () {
 
-		boolean condition1 = true;
+			boolean condition1 = true;
 
-		Scanner scanner = new Scanner(System.in);
+			Scanner scanner = new Scanner(System.in);
 
-		welcomeMessageGuest();
+			welcomeMessageGuest();
 
-		while (condition1) {
+			while (condition1) {
 
-			char input = scanner.next().charAt(0); 
-			scanner.nextLine();
+				char input = scanner.next().charAt(0); 
+				scanner.nextLine();
 
-			if (input == 'y') {
+				if (input == 'y') {
 
-				existingGuest();
-				condition1 = false;
+					existingGuest();
+					condition1 = false;
 
-			}
+				}
 
-			else if (input == 'n') {
+				else if (input == 'n') {
 
-				nonExistingGuest();
-				existingGuest();
-				condition1 = false;
+					nonExistingGuest();
+					existingGuest();
+					condition1 = false;
 
-			}
+				}
 
-			else {
+				else {
 
-				System.out.println("Wrong input");
+					System.out.println("Wrong input");
+
+				}
 
 			}
 
 		}
-
-	}
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -80,14 +82,14 @@ public class Guests {
 		String password = scanner.nextLine();
 		System.out.println("");
 
-		Login.signUpGuest(password,email,guestPasswords,guestEmails);
+		Login.signUpGuest(password,email);
 	
 		System.out.println("Perfect. You are registered");
 		System.out.println("");
 		System.out.println("You are now being redirected to the login page...");
 		System.out.println("");
 
-}
+	}
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -95,103 +97,113 @@ public class Guests {
 	public static void existingGuest () {
 
 		Scanner scanner = new Scanner(System.in);
+
 		boolean condition2 = true;
+		boolean condition3 = true;
 
-		System.out.println("To login, please write down your email:");
-		System.out.println("");
-		String email = scanner.nextLine();
-		System.out.println("");
+		while (condition3) {
 
-		System.out.println("Nice. Please write down your password now:");
-		System.out.println("");
-		String password = scanner.nextLine();
-		System.out.println("");
-
-		User user = new User(email, password);
-
-		if (Login.signInGuest(user.getPassword(), user.getEmail(),guestEmails, guestPasswords) == false) {
-
-			System.out.print("Login unsuccesfull ...");
-
-		}
-
-		else if (Login.signInGuest(user.getPassword(), user.getEmail(),guestEmails,guestPasswords) == true) {
-
-			System.out.print("Login succesfull ...");
+			System.out.println("To login, please write down your email:");
+			System.out.println("");
+			String email = scanner.nextLine();
 			System.out.println("");
 
-			while (condition2) {
+			System.out.println("Nice. Please write down your password now:");
+			System.out.println("");
+			String password = scanner.nextLine();
+			System.out.println("");
 
-				choiceMessagesGuest();
+			User user = new User(email, password);
 
-				char input = scanner.next().charAt(0); 
-				scanner.nextLine();
 
-				if (input == 'p') {
+			if (Login.signInGuest(user.getPassword(), user.getEmail(),guestEmails, guestPasswords) == false) {
 
-					System.out.println("Please input your new password");
-					System.out.println("");
+				System.out.println("Login unsuccesfull ...");
+				System.out.println("");
 
-					String newPassword = scanner.nextLine();
+			}
 
-					user.changePasswordGuest(newPassword,guestPasswords,guestEmails);
-					System.out.println("Password changed ...");
-					System.out.println("");
+			else if (Login.signInGuest(user.getPassword(), user.getEmail(),guestEmails,guestPasswords) == true) {
 
-				}
+				System.out.print("Login succesfull ...");
+				System.out.println("");
 
-				else if (input == 'r') {
+				condition3 = false;
 
-					System.out.println("");
-					System.out.println (user.remindPasswordGuest(guestEmails));
-					System.out.println("");
+				while (condition2) {
 
-				}
+					choiceMessagesGuest();
 
-				else if (input == 'f') {
+					char input = scanner.next().charAt(0); 
+					scanner.nextLine();
 
-					System.out.println("");
-					foodRequirements();
-					System.out.println("");
+					if (input == 'p') {
 
-				}
+						System.out.println("Please input your new password");
+						System.out.println("");
 
-				else if (input == 'i') {
+						String newPassword = scanner.nextLine();
 
-					System.out.println("");
-					respondToInvitation();
-					System.out.println("");
+						user.changePasswordGuest(newPassword,guestPasswords,guestEmails);
+						System.out.println("Password changed ...");
+						System.out.println("");
 
-				}
+					}
 
-				else if (input == 's') {
+					else if (input == 'r') {
 
-					System.out.println("");
-					seatNumber();
-					System.out.println("");
+						System.out.println("");
+						System.out.println (user.remindPasswordGuest(guestEmails));
+						System.out.println("");
 
-				}
+					}
 
-				else if (input == 'd') {
+					else if (input == 'f') {
 
-					System.out.println("");
-					coupleContactDetails();
-					System.out.println("");
+						System.out.println("");
+						foodRequirements(user.getEmail());
+						System.out.println("");
 
-				}
+					}
 
-				else if (input == 'q') {
+					else if (input == 'i') {
 
-					System.out.println("Quitting...");
-					condition2 = false;
+						System.out.println("");
+						respondToInvitation(user.getEmail());
+						System.out.println("");
 
-				}
+					}
 
-				else {
+					else if (input == 's') {
 
-					System.out.println("");
-					System.out.println("Wrong input...");
-					System.out.println("");
+						System.out.println("");
+						seatNumber(user.getEmail());
+						System.out.println("");
+
+					}
+
+					else if (input == 'd') {
+
+						System.out.println("");
+						coupleContactDetails();
+						System.out.println("");
+
+					}
+
+					else if (input == 'q') {
+
+						System.out.println("Quitting...");
+						condition2 = false;
+
+					}
+
+					else {
+
+						System.out.println("");
+						System.out.println("Wrong input...");
+						System.out.println("");
+
+					}
 
 				}
 
@@ -227,24 +239,114 @@ public class Guests {
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-	public static void foodRequirements () {
+	public static void foodRequirements (String email) {
 
+		Scanner scanner = new Scanner(System.in);
+
+		if (Login.checkIfGuestExists(email) == true) {
+
+			if ((foodRequirements.size()) < (guestEmails.size())) {
+
+				System.out.println("Please input your food requirements");
+				System.out.println("");
+
+				String foodReq = scanner.nextLine();
+
+				foodRequirements.add(foodReq);
+
+				System.out.println("Food requirements added ...");
+				System.out.println("");
+
+			}
+
+			else {	
+
+				System.out.println("Please input your food requirements");
+				System.out.println("");
+
+				String foodReq = scanner.nextLine();
+
+				foodRequirements.add(foodReq);
+
+				System.out.println("Food requirements added ...");
+				System.out.println("");
+
+				if (foodRequirements.contains(foodReq)) {
+
+					int index = guestEmails.indexOf(email);
+
+					foodRequirements.set(index, foodReq);
+
+				}
+
+			}
+
+		}
 
 	}
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-	public static void respondToInvitation () {
+	public static void respondToInvitation (String email) {
 
+		Scanner scanner = new Scanner(System.in);
+		boolean condition = true;
+
+		while (condition) {
+
+			System.out.println("Press y if you are coming, n if you are not coming or q to go back to the main menu:");
+			System.out.println("");
+
+			char input = scanner.next().charAt(0);
+			scanner.nextLine();
+
+			if (input == 'y') {
+
+				int index = guestEmails.indexOf(email);
+				System.out.println(index);
+				guestsResponses.set(index, "Coming");
+
+			}
+
+			else if (input == 'n') {
+
+				int index = guestEmails.indexOf(email);
+				guestsResponses.set(index, "Not coming");
+
+			}
+
+			else if (input == 'q') {
+
+				System.out.println("");
+				System.out.println("Back to the main menu...");
+				System.out.println("");
+				condition = false;
+
+			}
+
+			else {
+
+				System.out.println("");
+				System.out.println("Wrong input...");
+				System.out.println("");
+
+			}
+		
+		}
 
 	}
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-	public static void seatNumber () {
+	public static void seatNumber (String email) {
 
+		int index = guestEmails.indexOf(email);
+
+		System.out.println("");
+		System.out.println("Your seat number is " + seatNumber.get(index));
+		System.out.println("");
 
 	}
 
@@ -253,11 +355,11 @@ public class Guests {
 
 	public static void coupleContactDetails () {
 
+		System.out.println("The couple's email address is: " + Couple.coupleEmail);
 
 	}
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
 
 }
