@@ -2,6 +2,7 @@ package weddina.week1;
 
 import java.util.*;
 
+import weddina.week1.Guests;
 public class Businesses{
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -16,14 +17,14 @@ public class Businesses{
 	public static ArrayList <String> bandNames = new ArrayList <String>();
 	public static ArrayList <String> bandPrices = new ArrayList <String>();
 	public static ArrayList <String> bandDescriptions = new ArrayList <String>();
-	public static ArrayList <String> catererPasswords = new ArrayList <String>();
-	public static ArrayList <String> catererEmails = new ArrayList <String>();
+	public static ArrayList <String> bandPasswords = new ArrayList <String>();
+	public static ArrayList <String> bandEmails = new ArrayList <String>();
 
 	public static ArrayList <String> venueNames = new ArrayList <String>();
 	public static ArrayList <String> venuePrices = new ArrayList <String>();
 	public static ArrayList <String> venueDescriptions = new ArrayList <String>();
-	public static ArrayList <String> catererPasswords = new ArrayList <String>();
-	public static ArrayList <String> catererEmails = new ArrayList <String>();
+	public static ArrayList <String> venuePasswords = new ArrayList <String>();
+	public static ArrayList <String> venueEmails = new ArrayList <String>();
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -87,7 +88,7 @@ public class Businesses{
 		String password = scanner.nextLine();
 		System.out.println("");
 
-		Login.signUpGuest(password,email);
+		Login.signUpBusiness(password,email, listEmails,listPasswords);
 	
 		System.out.println("Perfect. You are registered");
 		System.out.println("");
@@ -120,14 +121,14 @@ public class Businesses{
 
 			User user = new User(email, password);
 
-			if (Login.signInGuest(user.getPassword(), user.getEmail(),guestEmails, guestPasswords) == false) {
+			if (Login.signInBusiness(user.getPassword(), user.getEmail(),listEmails, listPasswords) == false) {
 
 				System.out.println("Login unsuccesfull ...");
 				System.out.println("");
 
 			}
 
-			else if (Login.signInGuest(user.getPassword(), user.getEmail(),guestEmails,guestPasswords) == true) {
+			else if (Login.signInBusiness(user.getPassword(), user.getEmail(),listEmails,listPasswords) == true) {
 
 				System.out.print("Login succesfull ...");
 				System.out.println("");
@@ -136,7 +137,7 @@ public class Businesses{
 
 				while (condition2) {
 
-					choiceMessagesGuest();
+					choiceMessagesBusiness();
 
 					char input = scanner.next().charAt(0); 
 					scanner.nextLine();
@@ -148,7 +149,7 @@ public class Businesses{
 
 						String newPassword = scanner.nextLine();
 
-						user.changePasswordGuest(newPassword,guestPasswords,guestEmails);
+						user.changePasswordBusiness(newPassword,listPasswords,listEmails);
 						System.out.println("Password changed ...");
 						System.out.println("");
 
@@ -157,31 +158,7 @@ public class Businesses{
 					else if (input == 'r') {
 
 						System.out.println("");
-						System.out.println (user.remindPasswordGuest(guestEmails));
-						System.out.println("");
-
-					}
-
-					else if (input == 'f') {
-
-						System.out.println("");
-						foodRequirements(user.getEmail());
-						System.out.println("");
-
-					}
-
-					else if (input == 'i') {
-
-						System.out.println("");
-						respondToInvitation(user.getEmail());
-						System.out.println("");
-
-					}
-
-					else if (input == 's') {
-
-						System.out.println("");
-						seatNumber(user.getEmail());
+						System.out.println (user.remindPasswordBusiness(listEmails));
 						System.out.println("");
 
 					}
@@ -189,7 +166,15 @@ public class Businesses{
 					else if (input == 'd') {
 
 						System.out.println("");
-						coupleContactDetails();
+						Guests.coupleContactDetails();
+						System.out.println("");
+
+					}
+
+					else if (input == 'a') {
+
+						System.out.println("");
+						addBusinessdetails(listNames,listDescriptions,listPrices,listEmails);
 						System.out.println("");
 
 					}
@@ -220,7 +205,7 @@ public class Businesses{
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-	public static void choiceMessagesBusinesses () {
+	public static void choiceMessagesBusiness () {
 
 		System.out.println("What would you like to do?");
 		System.out.println("");
@@ -232,11 +217,77 @@ public class Businesses{
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-	public static void welcomeMessageBusinesses () {
+	public static void welcomeMessagesBusinesses () {
 
 		System.out.println("Are you an existing user? ");
 		System.out.println("");
 		System.out.println("Press y for yes or n for no:");
+
+	}
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+	public static void addBusinessdetails(ArrayList <String> listNames,ArrayList <String> listDescriptions ,ArrayList <String> listPrices,ArrayList <String> listEmails) {
+
+		Scanner scanner = new Scanner(System.in);
+
+		if ((listEmails.size()) < (listNames.size())) {
+
+			System.out.println("Please input the name of your business:");
+			System.out.println("");
+
+			String businessName = scanner.nextLine();
+			listNames.add(businessName);
+
+			System.out.println("Please input the description of your business:");
+			System.out.println("");
+
+			String businessDescription = scanner.nextLine();
+			listDescriptions.add(businessDescription);
+
+			System.out.println("Please input the price of your business:");
+			System.out.println("");
+
+			String businessPrice = scanner.nextLine();
+			listPrices.add(businessPrice);
+
+			System.out.println("Business details added ...");
+			System.out.println("");
+
+		}
+
+		else {	
+
+			System.out.println("Please input the name of your business:");
+			System.out.println("");
+
+			String businessName = scanner.nextLine();
+
+			System.out.println("Please input the description of your business:");
+			System.out.println("");
+
+			String businessDescription = scanner.nextLine();
+
+			System.out.println("Please input the price of your business:");
+			System.out.println("");
+
+			String businessPrice = scanner.nextLine();
+
+			if (listNames.contains(businessName)) {
+
+				int index = listNames.indexOf(businessName);
+
+				listNames.set(index, businessName);
+				listDescriptions.set(index, businessDescription);
+				listPrices.set(index, businessPrice);
+
+				System.out.println("Business details updated ...");
+				System.out.println("");
+
+			}
+
+		}
 
 	}
 
