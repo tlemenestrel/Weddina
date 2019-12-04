@@ -54,9 +54,9 @@ public class Main {
 
 		Scanner scanner = new Scanner(System.in);
 
-		messageForChoosingTypeOfUser();
-
 		while (condition1) {
+
+			messageForChoosingTypeOfUser();
 
 			char input = scanner.next().charAt(0); 
 			scanner.nextLine();
@@ -72,6 +72,51 @@ public class Main {
 				Guests.handlingGuests();
 				condition1 = false;
 
+			}
+
+			else if (input == 'b') {
+
+				boolean condition2 = true;
+
+				while (condition2) {
+
+					System.out.println("");
+					System.out.println("Press c for caterer, v for venue or b for band:");
+
+					char input2 = scanner.next().charAt(0); 
+					scanner.nextLine();
+
+					if (input2 == 'c') {
+
+						Businesses.handlingBusinesses(Businesses.catererNames,Businesses.catererDescriptions,Businesses.catererPrices);
+						condition2 = false;
+						condition1 = false;
+
+					}
+
+					else if (input2 == 'v') {
+
+						Businesses.handlingBusinesses(Businesses.venueNames,Businesses.venueDescriptions,Businesses.venuePrices);
+						condition2 = false;
+						condition1 = false;
+						
+					}
+
+					else if (input2 == 'b') {
+
+						Businesses.handlingBusinesses(Businesses.bandNames,Businesses.bandDescriptions,Businesses.bandPrices);
+						condition2 = false;
+						condition1 = false;
+						
+					}
+
+					else {
+
+						System.out.println("Wrong input");
+
+					}
+
+				}
 			}
 
 			else {
