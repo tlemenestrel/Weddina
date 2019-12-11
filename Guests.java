@@ -23,43 +23,43 @@ public class Guests {
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-		public static void handlingGuests () {
+	public static void handlingGuests () {
 
-			boolean condition1 = true;
+		boolean condition1 = true;
 
-			Scanner scanner = new Scanner(System.in);
+		Scanner scanner = new Scanner(System.in);
 
-			welcomeMessageGuest();
+		welcomeMessageGuest();
 
-			while (condition1) {
+		while (condition1) {
 
-				char input = scanner.next().charAt(0); 
-				scanner.nextLine();
+			char input = scanner.next().charAt(0); 
+			scanner.nextLine();
 
-				if (input == 'y') {
+			if (input == 'y') {
 
-					existingGuest();
-					condition1 = false;
+				existingGuest();
+				condition1 = false;
 
-				}
+			}
 
-				else if (input == 'n') {
+			else if (input == 'n') {
 
-					nonExistingGuest();
-					existingGuest();
-					condition1 = false;
+				nonExistingGuest();
+				existingGuest();
+				condition1 = false;
 
-				}
+			}
 
-				else {
+			else {
 
-					System.out.println("Wrong input");
-
-				}
+				System.out.println("Wrong input");
 
 			}
 
 		}
+
+	}
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
