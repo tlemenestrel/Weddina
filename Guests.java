@@ -14,7 +14,7 @@ public class Guests {
 
 	public static ArrayList <String> foodRequirements = new ArrayList <String>();
 
-	public static ArrayList <String> guestsResponses = new ArrayList <String>();
+	public static ArrayList <String> guestsResponses = new ArrayList <String>(); // For future iterations, should be a ArrayList <Boolean>
 
 	public static ArrayList <Integer> seatNumber = new ArrayList <Integer>();
 
